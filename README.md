@@ -1,4 +1,4 @@
-# Echecs à deux joueurs
+# Jeu d'échecs à deux joueurs
 
 ![Un début de partie, sur le produit fini](/visuels/PF_initial.jpeg "début de partie")
 ![Un début de partie, sur le produit fini](/visuels/PF_en_cours.jpeg "début de partie")
