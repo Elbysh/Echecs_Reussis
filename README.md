@@ -1,11 +1,13 @@
 # Echecs à deux joueurs
 
+![Un début de partie, sur le produit fini](/visuels/PF_initial.jpeg "début de partie")
+![Un début de partie, sur le produit fini](/visuels/PF_en_cours.jpeg "début de partie")
 
 ## Lancement du jeu
 
-Pour tester le MVP, il suffit d'exécuter le fichier **mvp.py**, du module **game_chess**. Chacun son tour, un joueur tape une case (a8, e5... la case de départ), tape Enter, tape y (ou n s'il veut en choisir une autre), tape Enter, tape une deuxième case (la case d'arrivée), Enter, et le coup est joué (s'il est possible). Voilà ! Les informations sur la partie en cours (trait, échec...) s'affichent directement dans le terminal utilisé.
+Pour tester le MVP, il suffit d'exécuter dans un terminal <code>python -m game_chess -mvp</code>. Chacun son tour, un joueur tape une case (a8, e5... la case de départ), tape Enter, tape y (ou n s'il veut en choisir une autre), tape Enter, tape une deuxième case (la case d'arrivée), Enter, et le coup est joué (s'il est possible). Voilà ! Les informations sur la partie en cours (trait, échec...) s'affichent directement dans le terminal utilisé.
 
-Pour lancer le jeu, il suffit d'exécuter le fichier **main.py**, du module **game_chess**. Une fenêtre contenant un plateau d'échec s'ouvre. Pour jouer, il faut cliquer gauche sur une case (qui deviendra case de départ) et droit sur une autre (case d'arrivée), puis cliquer sur "Configurer" (ou Espace) pour effectuer le mouvement. Les informations sur la partie s'affichent dans la fenêtre. 
+Pour lancer le jeu, il suffit d'exécuter dans un terminal <code>python -m game_chess</code>. Une fenêtre contenant un plateau d'échec s'ouvre. Pour jouer, il faut cliquer gauche sur une case (qui deviendra case de départ) et droit sur une autre (case d'arrivée), puis cliquer sur "Configurer" (ou Espace) pour effectuer le mouvement. Les informations sur la partie s'affichent dans la fenêtre. 
 De plus, on peut parcourir les positions précédentes au moyen des flèches gauche (vers le passé) et droite (vers le présent) de la fenêtre, et revenir à la partie par "current". Pour quitter le jeu, cliquer sur Echap.
 
 
@@ -43,14 +45,7 @@ Les fonctions ``retour`` permettent de parcourir (en affichage seulement) les po
 
 ### Tests
 
-Chaque fonction du MVP a été testée par une fonction d'un module du dossier **test**. Le fichier **test_board** permet le test des fonctions du module **board**, et ainsi de suite. Les tests permettent de vérifier chacune des boucles des fonctions. Certains tests ont nécessité un mock (dans le module **game_input**) pour simuler l'entrée de la commande d'un joueur. Les fonctions du module **main** (pour le jeu fini) étant copiées du MVP, et pour la plupart des fonctions d'affichages utilisant **tkinter**, n'ont pas été testées par l'algorithme.
-
-
-## Répartition du travail
-
-Toutes les fonctionnalités du MVP en été codées en parallèle, la création et l'affichage du plateau par Oscar, les évolutions de pièces (déplacements, prises) par Yi et Pierre, les situations particulières (échec, pat) par Raphaël, l'acquisition des commandes des joueurs par William, et les tests de toutes ces fonctions par Oscar et William. 
-Les fonctionnalités du jeu fini ont nécessité une légère refonte de certaines fonctions de base (notamment des ajouts d'arguments aux fonctions). Ces refontes ont été effectuées par Pierre et Raphaël. Le roque et les promotions ont été codées par Yi. Oscar s'est chargé de l'affichage du jeu (module **main**) et de l'adaptation de ``game_play`` pour **tkinter**.
-
+Chaque fonction du MVP a été testée par une fonction d'un module du dossier **test**. Le fichier **test_board** permet le test des fonctions du module **board**, et ainsi de suite. Les tests permettent de vérifier chacune des boucles des fonctions. Certains tests ont nécessité un mock (dans le module **game_input**) pour simuler l'entrée de la commande d'un joueur. Les fonctions du module **main** (pour le jeu fini) étant copiées du MVP, et pour la plupart des fonctions d'affichages utilisant **tkinter**, n'ont pas été testées unitairement par l'algorithme.
 
 ## Étapes de la programmation
 
@@ -112,7 +107,5 @@ Pour plus de détails sur la rédaction du code, ou une démonstration du jeu, r
 
 https://drive.google.com/drive/folders/1vq7xJkFQFsbzg3vmdBjOief71Lbo_hKR?usp=sharing
 
-![Un début de partie, sur le produit fini](/visuels/PF_initial.jpeg "début de partie")
-![Un début de partie, sur le produit fini](/visuels/PF_en_cours.jpeg "début de partie")
 
 Bon jeu !

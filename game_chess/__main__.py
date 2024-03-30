@@ -1,14 +1,19 @@
 import tkinter as tk
-from board import *
-from game_fin import *
-from game_input import *
-from game_mvt import *
+from .board import *
+from .game_fin import *
+from .game_input import *
+from .game_mvt import *
+from .mvp import *
+import argparse
 
-# from game_chess.board import *
-# from game_chess.game_fin import *
-# from game_chess.game_input import *
-# from game_chess.game_mvt import *
-# from pygame import mixer
+parser = argparse.ArgumentParser()
+recuit_bool = parser.add_argument(
+    '-mvp', '--mvp', action='store_true', help="launch the mvp instead of the last version")
+
+args = parser.parse_args()
+if args.mvp:
+    game_play()
+
 
 # Variables globales pour stocker les coordonnées de la cellule sélectionnée
 selected_row = None
@@ -137,7 +142,8 @@ def movements():
         if not echec(board, lastmove, bool_roque)[tour[0]]:
             # si le mouvement met en échec le joueur qui le joue
             print("Ce coup vous met en échec ! Recommencez")
-            msg_label.config(text="Ce coup vous met en échec ! Recommencez")
+            msg_label.config(
+                text="Ce coup vous met en échec ! Recommencez")
             return None
     # On effectue le mouvement maintenant qu'il a été validé
     board = mvt_dico[piece[0]](board, dep, arr, lastmove, bool_roque)
@@ -532,7 +538,8 @@ board = [
 ]
 
 # Liste des logs
-logs = [[[board[i][j]for j in range(len(board))] for i in range(len(board))]]
+logs = [[[board[i][j]for j in range(len(board))]
+         for i in range(len(board))]]
 coup = len(logs) - 1
 n = len(logs) - 1
 
@@ -551,99 +558,98 @@ dicocolor = {'b': 'blancs', 'n': 'noirs'}
 # Matrice vers échecs
 matrice_vers_echecs = {value: key for key,
                        value in echecs_vers_matrice.items()}
+if args.mvp:
+    game_play()
+else:
+    # Création des widgets Tkinter en plein écran
+    root = tk.Tk()
+    root.title("Chessboard")
+    root.attributes("-fullscreen", True)
 
-# Création des widgets Tkinter en plein écran
-root = tk.Tk()
-root.title("Chessboard")
-root.attributes("-fullscreen", True)
+    # Design des boutons
+    button_style = {'font': ('Helvetica', 12), 'width': 10,
+                    'height': 1, 'bg': '#8db596', 'fg': '#ffffff'}
 
-# Design des boutons
-button_style = {'font': ('Helvetica', 12), 'width': 10,
-                'height': 1, 'bg': '#8db596', 'fg': '#ffffff'}
+    # # Musique avec pygame
+    # mixer.init()
+    # mixer.music.load("../jeudéchec.mp3")
+    # mixer.music.play()
 
-# # Musique avec pygame
-# mixer.init()
-# mixer.music.load("../jeudéchec.mp3")
-# mixer.music.play()
+    # Création du canva qui va contenir l'échiiquier
+    canvas_size = int(0.6 * root.winfo_screenheight())
+    square_size = canvas_size // 8
 
-# Création du canva qui va contenir l'échiiquier
-canvas_size = int(0.6 * root.winfo_screenheight())
-square_size = canvas_size // 8
+    canvas = tk.Canvas(root, width=canvas_size + 100,
+                       height=canvas_size + 100, bg="white")
+    canvas.pack()
 
-canvas = tk.Canvas(root, width=canvas_size + 100,
-                   height=canvas_size + 100, bg="white")
-canvas.pack()
+    chessboard_values = {}
 
-chessboard_values = {}
+    # Création de l'échiquier initial
+    create_chessboard(canvas, square_size, board)
 
-# Création de l'échiquier initial
-create_chessboard(canvas, square_size, board)
+    # On lie l'événement 'clic gauche de la souris' pour sélectionner le départ du mouvement
+    canvas.bind('<Button-1>', on_cell_click_depart)
 
-# On lie l'événement 'clic gauche de la souris' pour sélectionner le départ du mouvement
-canvas.bind('<Button-1>', on_cell_click_depart)
+    # On lie l'événement 'clic droit de la souris' pour sélectionner l'arrivée du mouvement
+    canvas.bind('<Button-3>', on_cell_click_arrivee)
 
-# On lie l'événement 'clic droit de la souris' pour sélectionner l'arrivée du mouvement
-canvas.bind('<Button-3>', on_cell_click_arrivee)
+    # Label pour le tour de jeu
+    entry_label = tk.Label(root, text=f'Traits aux {tour}', bg='snow')
+    entry_label.pack()
 
-# Label pour le tour de jeu
-entry_label = tk.Label(root, text=f'Traits aux {tour}', bg='snow')
-entry_label.pack()
+    # Label pour les positions de départ et d'arrivée des pièces
+    dep_label = tk.Label(
+        root, text=f'départ  {matrice_vers_echecs[d]}', bg='snow')
+    dep_label.pack()
+    arr_label = tk.Label(
+        root, text=f'arrivée  {matrice_vers_echecs[a]}', bg='snow')
+    arr_label.pack()
 
-# Label pour les positions de départ et d'arrivée des pièces
-dep_label = tk.Label(root, text=f'départ  {matrice_vers_echecs[d]}', bg='snow')
-dep_label.pack()
-arr_label = tk.Label(
-    root, text=f'arrivée  {matrice_vers_echecs[a]}', bg='snow')
-arr_label.pack()
+    # Label pour les différents messages
+    msg_label = tk.Label(root, text='')
+    msg_label.pack(side="top", padx=10, pady=0)
+    msg1_label = tk.Label(root, text='')
+    msg1_label.pack(side="left", padx=10, pady=0)
+    msg2_label = tk.Label(root, text='')
+    msg2_label.pack(side="left", padx=10, pady=0)
+    msg3_label = tk.Label(root, text='')
+    msg3_label.pack(side="top", padx=10, pady=0)
+    msg4_label = tk.Label(root, text=f'coup {coup} sur {n} coup(s)', **{'font': (
+        'Helvetica', 12), 'width': 20, 'height': 1, 'bg': '#8db596', 'fg': '#ffffff'})
+    msg4_label.pack(side="left", padx=10, pady=0)
 
-# Label pour les différents messages
-msg_label = tk.Label(root, text='')
-msg_label.pack(side="top", padx=10, pady=0)
-msg1_label = tk.Label(root, text='')
-msg1_label.pack(side="left", padx=10, pady=0)
-msg2_label = tk.Label(root, text='')
-msg2_label.pack(side="left", padx=10, pady=0)
-msg3_label = tk.Label(root, text='')
-msg3_label.pack(side="top", padx=10, pady=0)
-msg4_label = tk.Label(root, text=f'coup {coup} sur {n} coup(s)', **{'font': (
-    'Helvetica', 12), 'width': 20, 'height': 1, 'bg': '#8db596', 'fg': '#ffffff'})
-msg4_label.pack(side="left", padx=10, pady=0)
+    # Création de boutons pour pouvoir naviguer dans l'historique de la partie (logs)
+    left_button = tk.Button(
+        root, text="<-", command=retour_en_arriere, **button_style)
+    left_button.pack(side="left", padx=0, pady=10)
+    mid_button = tk.Button(
+        root, text="current", command=retour_a_zero, **button_style)
+    mid_button.pack(side="left", padx=0, pady=10)
+    right_button = tk.Button(
+        root, text="->", command=retour_en_avant, **button_style)
+    right_button.pack(side="left", padx=0, pady=10)
 
+    # Bouton de création et configuration de la grille
+    configure_button = tk.Button(
+        root, text="Configurer", command=update_chessboard, **button_style)
+    configure_button.pack(side="left", padx=10, pady=10)
+    # Alternative à ce bouton en cliquant sur la molette de la souris
+    canvas.bind('<Button-2>', update_chessboard2, add=True)
+    # Alternative à ce bouton en appuyant espace
+    root.bind('<KeyPress-space>', update_chessboard2, add=True)
 
-# Création de boutons pour pouvoir naviguer dans l'historique de la partie (logs)
-left_button = tk.Button(
-    root, text="<-", command=retour_en_arriere, **button_style)
-left_button.pack(side="left", padx=0, pady=10)
-mid_button = tk.Button(
-    root, text="current", command=retour_a_zero, **button_style)
-mid_button.pack(side="left", padx=0, pady=10)
-right_button = tk.Button(
-    root, text="->", command=retour_en_avant, **button_style)
-right_button.pack(side="left", padx=0, pady=10)
+    # Navigation dans les logs mais avec des touches du clavier
+    root.bind('<Left>', retour_en_arriere2)
+    root.bind('<Right>', retour_en_avant2)
+    root.bind('<Return>', retour_a_zero2)
 
-# Bouton de création et configuration de la grille
-configure_button = tk.Button(
-    root, text="Configurer", command=update_chessboard, **button_style)
-configure_button.pack(side="left", padx=10, pady=10)
-# Alternative à ce bouton en cliquant sur la molette de la souris
-canvas.bind('<Button-2>', update_chessboard2, add=True)
-# Alternative à ce bouton en appuyant espace
-root.bind('<KeyPress-space>', update_chessboard2, add=True)
+    def fermer(event):
+        """Fonction pour partir du plein écran et arrêter la partie
+        """
+        root.destroy()
 
-# Navigation dans les logs mais avec des touches du clavier
-root.bind('<Left>', retour_en_arriere2)
-root.bind('<Right>', retour_en_avant2)
-root.bind('<Return>', retour_a_zero2)
+    # Partir du plein écran grâce à la touche 'Espace' du clavier
+    root.bind("<Escape>", fermer)
 
-
-def fermer(event):
-    """Fonction pour partir du plein écran et arrêter la partie
-    """
-    root.destroy()
-
-
-# Partir du plein écran grâce à la touche 'Espace' du clavier
-root.bind("<Escape>", fermer)
-
-
-root.mainloop()
+    root.mainloop()

@@ -1,11 +1,7 @@
-from game_input import *
-from game_mvt import *
-from game_fin import *
-from board import *
-# from game_chess.game_input import *
-# from game_chess.game_mvt import *
-# from game_chess.game_fin import *
-# from game_chess.board import *
+from .game_input import *
+from .game_mvt import *
+from .game_fin import *
+from .board import *
 
 
 dicocolor = {'b': 'blancs', 'n': 'noirs'}
@@ -130,5 +126,3 @@ def game_play():
             gameover = True
     print('Fin de la partie')
 
-
-game_play()

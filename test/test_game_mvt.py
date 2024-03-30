@@ -12,10 +12,10 @@ def test_mvt_tour_pos():
              ['  ', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
              ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
 
-    assert (mvt_tour_poss(board, (7, 0), (2, 0)))
-    assert (mvt_tour_poss(board, (7, 0), (1, 0)))
-    assert not (mvt_tour_poss(board, (7, 0), (0, 0)))
-    assert not (mvt_tour_poss(board, (7, 0), (7, 1)))
+    assert (mvt_tour_poss(board, (7, 0), (2, 0), [(0, 0), (0, 0)], False))
+    assert (mvt_tour_poss(board, (7, 0), (1, 0), [(0, 0), (0, 0)], False))
+    assert not (mvt_tour_poss(board, (7, 0), (0, 0), [(0, 0), (0, 0)], False))
+    assert not (mvt_tour_poss(board, (7, 0), (7, 1), [(0, 0), (0, 0)], False))
     board = [['Tn', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
              ['  ', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
              ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
@@ -24,7 +24,7 @@ def test_mvt_tour_pos():
              ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
              ['  ', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
              ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
-    assert (mvt_tour_poss(board, (0, 0), (7, 0)))
+    assert (mvt_tour_poss(board, (0, 0), (7, 0), [(0, 0), (0, 0)], False))
     assert not (mvt_tour_poss(
         [['  ', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
          ['  ', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
@@ -33,7 +33,7 @@ def test_mvt_tour_pos():
          ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
          ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
          ['  ', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
-         ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (3, 1), (3, 0)))
+         ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (3, 1), (3, 0), [(0, 0), (0, 0)], False))
     assert (mvt_tour_poss(
             [['  ', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
              ['  ', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
@@ -42,7 +42,7 @@ def test_mvt_tour_pos():
              ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
              ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
              ['  ', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
-             ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (3, 1), (3, 5)))
+             ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (3, 1), (3, 5), [(0, 0), (0, 0)], False))
     assert not (mvt_tour_poss(
         [['  ', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
          ['  ', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
@@ -51,7 +51,7 @@ def test_mvt_tour_pos():
          ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
          ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
          ['  ', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
-         ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (3, 1), (1, 1)))
+         ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (3, 1), (1, 1), [(0, 0), (0, 0)], False))
     assert not (mvt_tour_poss(
         [['  ', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
          ['  ', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
@@ -60,7 +60,7 @@ def test_mvt_tour_pos():
          ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
          ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
          ['  ', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
-         ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (3, 1), (4, 2)))
+         ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (3, 1), (4, 2), [(0, 0), (0, 0)], False))
     assert not (mvt_tour_poss(
         [['  ', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
          ['  ', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
@@ -69,7 +69,7 @@ def test_mvt_tour_pos():
          ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
          ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
          ['  ', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
-         ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (3, 1), (3, 5)))
+         ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (3, 1), (3, 5), [(0, 0), (0, 0)], False))
 
 
 def test_mvt_tour():
@@ -82,20 +82,20 @@ def test_mvt_tour():
              ['  ', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
              ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
 
-    assert (mvt_tour(board, (7, 0), (2, 0))) == [['Tn', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
-                                                 ['Pn', 'Pn', 'Pn', 'Pn',
-                                                     'Pn', 'Pn', 'Pn', 'Pn'],
-                                                 ['Tb', '  ', '  ', '  ',
-                                                     '  ', '  ', '  ', '  '],
-                                                 ['  ', '  ', '  ', '  ',
-                                                     '  ', '  ', '  ', '  '],
-                                                 ['  ', '  ', '  ', '  ',
-                                                     '  ', '  ', '  ', '  '],
-                                                 ['  ', '  ', '  ', '  ',
-                                                     '  ', '  ', '  ', '  '],
-                                                 ['  ', 'Pb', 'Pb', 'Pb',
-                                                     'Pb', 'Pb', 'Pb', 'Pb'],
-                                                 ['  ', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
+    assert (mvt_tour(board, (7, 0), (2, 0), [(0, 0), (0, 0)], False)) == [['Tn', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
+                                                                          ['Pn', 'Pn', 'Pn', 'Pn',
+                                                                          'Pn', 'Pn', 'Pn', 'Pn'],
+                                                                          ['Tb', '  ', '  ', '  ',
+                                                                          '  ', '  ', '  ', '  '],
+                                                                          ['  ', '  ', '  ', '  ',
+                                                                           '  ', '  ', '  ', '  '],
+                                                                          ['  ', '  ', '  ', '  ',
+                                                                           '  ', '  ', '  ', '  '],
+                                                                          ['  ', '  ', '  ', '  ',
+                                                                           '  ', '  ', '  ', '  '],
+                                                                          ['  ', 'Pb', 'Pb', 'Pb',
+                                                                           'Pb', 'Pb', 'Pb', 'Pb'],
+                                                                          ['  ', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
     board = [['Tn', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
              ['Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
              ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
@@ -104,20 +104,20 @@ def test_mvt_tour():
              ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
              ['  ', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
              ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
-    assert (mvt_tour(board, (7, 0), (1, 0))) == [['Tn', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
-                                                 ['Tb', 'Pn', 'Pn', 'Pn',
-                                                     'Pn', 'Pn', 'Pn', 'Pn'],
-                                                 ['  ', '  ', '  ', '  ',
-                                                     '  ', '  ', '  ', '  '],
-                                                 ['  ', '  ', '  ', '  ',
-                                                     '  ', '  ', '  ', '  '],
-                                                 ['  ', '  ', '  ', '  ',
-                                                     '  ', '  ', '  ', '  '],
-                                                 ['  ', '  ', '  ', '  ',
-                                                     '  ', '  ', '  ', '  '],
-                                                 ['  ', 'Pb', 'Pb', 'Pb',
-                                                     'Pb', 'Pb', 'Pb', 'Pb'],
-                                                 ['  ', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
+    assert (mvt_tour(board, (7, 0), (1, 0), [(0, 0), (0, 0)], False)) == [['Tn', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
+                                                                          ['Tb', 'Pn', 'Pn', 'Pn',
+                                                                          'Pn', 'Pn', 'Pn', 'Pn'],
+                                                                          ['  ', '  ', '  ', '  ',
+                                                                          '  ', '  ', '  ', '  '],
+                                                                          ['  ', '  ', '  ', '  ',
+                                                                           '  ', '  ', '  ', '  '],
+                                                                          ['  ', '  ', '  ', '  ',
+                                                                           '  ', '  ', '  ', '  '],
+                                                                          ['  ', '  ', '  ', '  ',
+                                                                           '  ', '  ', '  ', '  '],
+                                                                          ['  ', 'Pb', 'Pb', 'Pb',
+                                                                           'Pb', 'Pb', 'Pb', 'Pb'],
+                                                                          ['  ', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
     board = [['Tn', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
              ['Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
              ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
@@ -126,7 +126,7 @@ def test_mvt_tour():
              ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
              ['  ', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
              ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
-    assert (mvt_tour(board, (7, 0), (7, 1))) == board
+    assert (mvt_tour(board, (7, 0), (7, 1), [(0, 0), (0, 0)], False)) == board
     board = [['Tn', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
              ['Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
              ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
@@ -135,7 +135,7 @@ def test_mvt_tour():
              ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
              ['  ', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
              ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
-    assert (mvt_tour(board, (0, 0), (7, 0))) == board
+    assert (mvt_tour(board, (0, 0), (7, 0), [(0, 0), (0, 0)], False)) == board
 
 
 def test_mvt_fou_poss():
@@ -147,12 +147,12 @@ def test_mvt_fou_poss():
              ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
              ['  ', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
              ['Tb', 'Cb', '  ', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
-    assert (mvt_fou_poss(board, (4, 2), (5, 1)))
-    assert (mvt_fou_poss(board, (4, 2), (1, 5)))
-    assert (mvt_fou_poss(board, (4, 2), (2, 4)))
-    assert not (mvt_fou_poss(board, (4, 2), (6, 4)))
-    assert not (mvt_fou_poss(board, (4, 2), (0, 6)))
-    assert not (mvt_fou_poss(board, (4, 0), (7, 1)))
+    assert (mvt_fou_poss(board, (4, 2), (5, 1), [(0, 0), (0, 0)], False))
+    assert (mvt_fou_poss(board, (4, 2), (1, 5), [(0, 0), (0, 0)], False))
+    assert (mvt_fou_poss(board, (4, 2), (2, 4), [(0, 0), (0, 0)], False))
+    assert not (mvt_fou_poss(board, (4, 2), (6, 4), [(0, 0), (0, 0)], False))
+    assert not (mvt_fou_poss(board, (4, 2), (0, 6), [(0, 0), (0, 0)], False))
+    assert not (mvt_fou_poss(board, (4, 0), (7, 1), [(0, 0), (0, 0)], False))
 
 
 def test_mvt_fou():
@@ -164,20 +164,20 @@ def test_mvt_fou():
              ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
              ['  ', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
              ['Tb', 'Cb', '  ', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
-    assert (mvt_fou(board, (4, 2), (5, 1))) == [['Tn', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
-                                                ['Pn', 'Pn', 'Pn', 'Pn',
-                                                 'Pn', 'Pn', 'Pn', 'Pn'],
-                                                ['  ', '  ', '  ', '  ',
-                                                 '  ', '  ', '  ', '  '],
-                                                ['  ', '  ', '  ', '  ',
-                                                 '  ', '  ', '  ', '  '],
-                                                ['  ', '  ', '  ', '  ',
-                                                 '  ', '  ', '  ', '  '],
-                                                ['  ', 'Fb', '  ', '  ',
-                                                 '  ', '  ', '  ', '  '],
-                                                ['  ', 'Pb', 'Pb', 'Pb',
-                                                 'Pb', 'Pb', 'Pb', 'Pb'],
-                                                ['Tb', 'Cb', '  ', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
+    assert (mvt_fou(board, (4, 2), (5, 1), [(0, 0), (0, 0)], False)) == [['Tn', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
+                                                                         ['Pn', 'Pn', 'Pn', 'Pn',
+                                                                         'Pn', 'Pn', 'Pn', 'Pn'],
+                                                                         ['  ', '  ', '  ', '  ',
+                                                                         '  ', '  ', '  ', '  '],
+                                                                         ['  ', '  ', '  ', '  ',
+                                                                          '  ', '  ', '  ', '  '],
+                                                                         ['  ', '  ', '  ', '  ',
+                                                                          '  ', '  ', '  ', '  '],
+                                                                         ['  ', 'Fb', '  ', '  ',
+                                                                          '  ', '  ', '  ', '  '],
+                                                                         ['  ', 'Pb', 'Pb', 'Pb',
+                                                                          'Pb', 'Pb', 'Pb', 'Pb'],
+                                                                         ['Tb', 'Cb', '  ', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
 
     board = [['Tn', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
              ['Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
@@ -187,20 +187,20 @@ def test_mvt_fou():
              ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
              ['  ', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
              ['Tb', 'Cb', '  ', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
-    assert (mvt_fou(board, (4, 2), (1, 5))) == [['Tn', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
-                                                ['Pn', 'Pn', 'Pn', 'Pn',
-                                                 'Pn', 'Fb', 'Pn', 'Pn'],
-                                                ['  ', '  ', '  ', '  ',
-                                                 '  ', '  ', '  ', '  '],
-                                                ['  ', '  ', '  ', '  ',
-                                                 '  ', '  ', '  ', '  '],
-                                                ['  ', '  ', '  ', '  ',
-                                                 '  ', '  ', '  ', '  '],
-                                                ['  ', '  ', '  ', '  ',
-                                                 '  ', '  ', '  ', '  '],
-                                                ['  ', 'Pb', 'Pb', 'Pb',
-                                                 'Pb', 'Pb', 'Pb', 'Pb'],
-                                                ['Tb', 'Cb', '  ', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
+    assert (mvt_fou(board, (4, 2), (1, 5), [(0, 0), (0, 0)], False)) == [['Tn', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
+                                                                         ['Pn', 'Pn', 'Pn', 'Pn',
+                                                                         'Pn', 'Fb', 'Pn', 'Pn'],
+                                                                         ['  ', '  ', '  ', '  ',
+                                                                         '  ', '  ', '  ', '  '],
+                                                                         ['  ', '  ', '  ', '  ',
+                                                                          '  ', '  ', '  ', '  '],
+                                                                         ['  ', '  ', '  ', '  ',
+                                                                          '  ', '  ', '  ', '  '],
+                                                                         ['  ', '  ', '  ', '  ',
+                                                                          '  ', '  ', '  ', '  '],
+                                                                         ['  ', 'Pb', 'Pb', 'Pb',
+                                                                          'Pb', 'Pb', 'Pb', 'Pb'],
+                                                                         ['Tb', 'Cb', '  ', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
     board = [['Tn', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
              ['Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
              ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
@@ -209,8 +209,8 @@ def test_mvt_fou():
              ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
              ['  ', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
              ['Tb', 'Cb', '  ', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
-    assert (mvt_fou(board, (4, 2), (0, 6))) == board
-    assert (mvt_fou(board, (4, 0), (7, 1))) == board
+    assert (mvt_fou(board, (4, 2), (0, 6), [(0, 0), (0, 0)], False)) == board
+    assert (mvt_fou(board, (4, 0), (7, 1), [(0, 0), (0, 0)], False)) == board
 
 
 def test_mvt_dame_poss():
@@ -222,15 +222,15 @@ def test_mvt_dame_poss():
              ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
              ['  ', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
              ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
-    assert (mvt_dame_poss(board, (4, 2), (5, 1)))
-    assert (mvt_dame_poss(board, (4, 2), (1, 5)))
-    assert (mvt_dame_poss(board, (4, 2), (2, 4)))
-    assert (mvt_dame_poss(board, (4, 2), (4, 0)))
-    assert (mvt_dame_poss(board, (4, 2), (1, 2)))
-    assert not (mvt_dame_poss(board, (4, 2), (0, 2)))
-    assert not (mvt_dame_poss(board, (4, 2), (6, 4)))
-    assert not (mvt_dame_poss(board, (4, 2), (0, 6)))
-    assert not (mvt_dame_poss(board, (4, 0), (7, 1)))
+    assert (mvt_dame_poss(board, (4, 2), (5, 1), [(0, 0), (0, 0)], False))
+    assert (mvt_dame_poss(board, (4, 2), (1, 5), [(0, 0), (0, 0)], False))
+    assert (mvt_dame_poss(board, (4, 2), (2, 4), [(0, 0), (0, 0)], False))
+    assert (mvt_dame_poss(board, (4, 2), (4, 0), [(0, 0), (0, 0)], False))
+    assert (mvt_dame_poss(board, (4, 2), (1, 2), [(0, 0), (0, 0)], False))
+    assert not (mvt_dame_poss(board, (4, 2), (0, 2), [(0, 0), (0, 0)], False))
+    assert not (mvt_dame_poss(board, (4, 2), (6, 4), [(0, 0), (0, 0)], False))
+    assert not (mvt_dame_poss(board, (4, 2), (0, 6), [(0, 0), (0, 0)], False))
+    assert not (mvt_dame_poss(board, (4, 0), (7, 1), [(0, 0), (0, 0)], False))
     assert not mvt_dame_poss([
         ['Tn', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
         ['Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
@@ -239,7 +239,7 @@ def test_mvt_dame_poss():
         ['  ', '  ', 'Db', '  ', 'Pb', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['Pb', 'Pb', 'Pb', 'Pb', '  ', 'Pb', 'Pb', 'Pb'],
-        ['Tb', 'Cb', 'Fb', '  ', 'Rb', 'Fb', 'Cb', 'Tb']], (4, 2), (4, 4))
+        ['Tb', 'Cb', 'Fb', '  ', 'Rb', 'Fb', 'Cb', 'Tb']], (4, 2), (4, 4), [(0, 0), (0, 0)], False)
     assert not mvt_dame_poss([
         ['Tn', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
         ['Pn', 'Pn', 'Pn', '  ', 'Pn', 'Pn', 'Pn', 'Pn'],
@@ -248,7 +248,7 @@ def test_mvt_dame_poss():
         ['  ', '  ', 'Db', '  ', 'Pn', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
-        ['Tb', 'Cb', 'Fb', '  ', 'Rb', 'Fb', 'Cb', 'Tb']], (4, 2), (6, 2))
+        ['Tb', 'Cb', 'Fb', '  ', 'Rb', 'Fb', 'Cb', 'Tb']], (4, 2), (6, 2), [(0, 0), (0, 0)], False)
     assert not mvt_dame_poss([
         ['Tn', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
         ['Pn', 'Pn', 'Pn', '  ', 'Pn', 'Pn', 'Pn', 'Pn'],
@@ -257,7 +257,7 @@ def test_mvt_dame_poss():
         ['  ', '  ', 'Db', '  ', 'Pn', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
-        ['Tb', 'Cb', 'Fb', '  ', 'Rb', 'Fb', 'Cb', 'Tb']], (4, 2), (4, 6))
+        ['Tb', 'Cb', 'Fb', '  ', 'Rb', 'Fb', 'Cb', 'Tb']], (4, 2), (4, 6), [(0, 0), (0, 0)], False)
 
 
 def test_mvt_dame():
@@ -269,20 +269,20 @@ def test_mvt_dame():
              ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
              ['  ', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
              ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
-    assert (mvt_dame(board, (4, 2), (5, 1))) == [['Tn', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
-                                                 ['Pn', 'Pn', 'Pn', 'Pn',
-                                                     'Pn', 'Pn', 'Pn', 'Pn'],
-                                                 ['  ', '  ', '  ', '  ',
-                                                     '  ', '  ', '  ', '  '],
-                                                 ['  ', '  ', '  ', '  ',
-                                                     '  ', '  ', '  ', '  '],
-                                                 ['  ', '  ', '  ', '  ',
-                                                     '  ', '  ', '  ', '  '],
-                                                 ['  ', 'Db', '  ', '  ',
-                                                     '  ', '  ', '  ', '  '],
-                                                 ['  ', 'Pb', 'Pb', 'Pb',
-                                                     'Pb', 'Pb', 'Pb', 'Pb'],
-                                                 ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
+    assert (mvt_dame(board, (4, 2), (5, 1), [(0, 0), (0, 0)], False)) == [['Tn', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
+                                                                          ['Pn', 'Pn', 'Pn', 'Pn',
+                                                                          'Pn', 'Pn', 'Pn', 'Pn'],
+                                                                          ['  ', '  ', '  ', '  ',
+                                                                          '  ', '  ', '  ', '  '],
+                                                                          ['  ', '  ', '  ', '  ',
+                                                                           '  ', '  ', '  ', '  '],
+                                                                          ['  ', '  ', '  ', '  ',
+                                                                           '  ', '  ', '  ', '  '],
+                                                                          ['  ', 'Db', '  ', '  ',
+                                                                           '  ', '  ', '  ', '  '],
+                                                                          ['  ', 'Pb', 'Pb', 'Pb',
+                                                                           'Pb', 'Pb', 'Pb', 'Pb'],
+                                                                          ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
     board = [['Tn', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
              ['Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
              ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
@@ -291,20 +291,20 @@ def test_mvt_dame():
              ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
              ['  ', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
              ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
-    assert (mvt_dame(board, (4, 2), (1, 5))) == [['Tn', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
-                                                 ['Pn', 'Pn', 'Pn', 'Pn',
-                                                     'Pn', 'Db', 'Pn', 'Pn'],
-                                                 ['  ', '  ', '  ', '  ',
-                                                     '  ', '  ', '  ', '  '],
-                                                 ['  ', '  ', '  ', '  ',
-                                                     '  ', '  ', '  ', '  '],
-                                                 ['  ', '  ', '  ', '  ',
-                                                     '  ', '  ', '  ', '  '],
-                                                 ['  ', '  ', '  ', '  ',
-                                                     '  ', '  ', '  ', '  '],
-                                                 ['  ', 'Pb', 'Pb', 'Pb',
-                                                     'Pb', 'Pb', 'Pb', 'Pb'],
-                                                 ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
+    assert (mvt_dame(board, (4, 2), (1, 5), [(0, 0), (0, 0)], False)) == [['Tn', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
+                                                                          ['Pn', 'Pn', 'Pn', 'Pn',
+                                                                          'Pn', 'Db', 'Pn', 'Pn'],
+                                                                          ['  ', '  ', '  ', '  ',
+                                                                          '  ', '  ', '  ', '  '],
+                                                                          ['  ', '  ', '  ', '  ',
+                                                                           '  ', '  ', '  ', '  '],
+                                                                          ['  ', '  ', '  ', '  ',
+                                                                           '  ', '  ', '  ', '  '],
+                                                                          ['  ', '  ', '  ', '  ',
+                                                                           '  ', '  ', '  ', '  '],
+                                                                          ['  ', 'Pb', 'Pb', 'Pb',
+                                                                           'Pb', 'Pb', 'Pb', 'Pb'],
+                                                                          ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
     board = [['Tn', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
              ['Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
              ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
@@ -313,20 +313,20 @@ def test_mvt_dame():
              ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
              ['  ', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
              ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
-    assert (mvt_dame(board, (4, 2), (2, 4))) == [['Tn', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
-                                                 ['Pn', 'Pn', 'Pn', 'Pn',
-                                                     'Pn', 'Pn', 'Pn', 'Pn'],
-                                                 ['  ', '  ', '  ', '  ',
-                                                     'Db', '  ', '  ', '  '],
-                                                 ['  ', '  ', '  ', '  ',
-                                                     '  ', '  ', '  ', '  '],
-                                                 ['  ', '  ', '  ', '  ',
-                                                     '  ', '  ', '  ', '  '],
-                                                 ['  ', '  ', '  ', '  ',
-                                                     '  ', '  ', '  ', '  '],
-                                                 ['  ', 'Pb', 'Pb', 'Pb',
-                                                     'Pb', 'Pb', 'Pb', 'Pb'],
-                                                 ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
+    assert (mvt_dame(board, (4, 2), (2, 4), [(0, 0), (0, 0)], False)) == [['Tn', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
+                                                                          ['Pn', 'Pn', 'Pn', 'Pn',
+                                                                          'Pn', 'Pn', 'Pn', 'Pn'],
+                                                                          ['  ', '  ', '  ', '  ',
+                                                                          'Db', '  ', '  ', '  '],
+                                                                          ['  ', '  ', '  ', '  ',
+                                                                           '  ', '  ', '  ', '  '],
+                                                                          ['  ', '  ', '  ', '  ',
+                                                                           '  ', '  ', '  ', '  '],
+                                                                          ['  ', '  ', '  ', '  ',
+                                                                           '  ', '  ', '  ', '  '],
+                                                                          ['  ', 'Pb', 'Pb', 'Pb',
+                                                                           'Pb', 'Pb', 'Pb', 'Pb'],
+                                                                          ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
     board = [['Tn', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
              ['Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
              ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
@@ -335,20 +335,20 @@ def test_mvt_dame():
              ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
              ['  ', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
              ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
-    assert (mvt_dame(board, (4, 2), (4, 0))) == [['Tn', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
-                                                 ['Pn', 'Pn', 'Pn', 'Pn',
-                                                     'Pn', 'Pn', 'Pn', 'Pn'],
-                                                 ['  ', '  ', '  ', '  ',
-                                                     '  ', '  ', '  ', '  '],
-                                                 ['  ', '  ', '  ', '  ',
-                                                     '  ', '  ', '  ', '  '],
-                                                 ['Db', '  ', '  ', '  ',
-                                                     '  ', '  ', '  ', '  '],
-                                                 ['  ', '  ', '  ', '  ',
-                                                     '  ', '  ', '  ', '  '],
-                                                 ['  ', 'Pb', 'Pb', 'Pb',
-                                                     'Pb', 'Pb', 'Pb', 'Pb'],
-                                                 ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
+    assert (mvt_dame(board, (4, 2), (4, 0), [(0, 0), (0, 0)], False)) == [['Tn', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
+                                                                          ['Pn', 'Pn', 'Pn', 'Pn',
+                                                                          'Pn', 'Pn', 'Pn', 'Pn'],
+                                                                          ['  ', '  ', '  ', '  ',
+                                                                          '  ', '  ', '  ', '  '],
+                                                                          ['  ', '  ', '  ', '  ',
+                                                                           '  ', '  ', '  ', '  '],
+                                                                          ['Db', '  ', '  ', '  ',
+                                                                           '  ', '  ', '  ', '  '],
+                                                                          ['  ', '  ', '  ', '  ',
+                                                                           '  ', '  ', '  ', '  '],
+                                                                          ['  ', 'Pb', 'Pb', 'Pb',
+                                                                           'Pb', 'Pb', 'Pb', 'Pb'],
+                                                                          ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
     board = [['Tn', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
              ['Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
              ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
@@ -357,24 +357,24 @@ def test_mvt_dame():
              ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
              ['  ', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
              ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
-    assert (mvt_dame(board, (4, 2), (1, 2))) == [['Tn', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
-                                                 ['Pn', 'Pn', 'Db', 'Pn',
-                                                     'Pn', 'Pn', 'Pn', 'Pn'],
-                                                 ['  ', '  ', '  ', '  ',
-                                                     '  ', '  ', '  ', '  '],
-                                                 ['  ', '  ', '  ', '  ',
-                                                     '  ', '  ', '  ', '  '],
-                                                 ['  ', '  ', '  ', '  ',
-                                                     '  ', '  ', '  ', '  '],
-                                                 ['  ', '  ', '  ', '  ',
-                                                     '  ', '  ', '  ', '  '],
-                                                 ['  ', 'Pb', 'Pb', 'Pb',
-                                                     'Pb', 'Pb', 'Pb', 'Pb'],
-                                                 ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
-    assert (mvt_dame(board, (4, 2), (0, 2))) == board
-    assert (mvt_dame(board, (4, 2), (6, 4))) == board
-    assert (mvt_dame(board, (4, 2), (0, 6))) == board
-    assert (mvt_dame(board, (4, 0), (7, 1))) == board
+    assert (mvt_dame(board, (4, 2), (1, 2), [(0, 0), (0, 0)], False)) == [['Tn', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
+                                                                          ['Pn', 'Pn', 'Db', 'Pn',
+                                                                          'Pn', 'Pn', 'Pn', 'Pn'],
+                                                                          ['  ', '  ', '  ', '  ',
+                                                                          '  ', '  ', '  ', '  '],
+                                                                          ['  ', '  ', '  ', '  ',
+                                                                           '  ', '  ', '  ', '  '],
+                                                                          ['  ', '  ', '  ', '  ',
+                                                                           '  ', '  ', '  ', '  '],
+                                                                          ['  ', '  ', '  ', '  ',
+                                                                           '  ', '  ', '  ', '  '],
+                                                                          ['  ', 'Pb', 'Pb', 'Pb',
+                                                                           'Pb', 'Pb', 'Pb', 'Pb'],
+                                                                          ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
+    assert (mvt_dame(board, (4, 2), (0, 2), [(0, 0), (0, 0)], False)) == board
+    assert (mvt_dame(board, (4, 2), (6, 4), [(0, 0), (0, 0)], False)) == board
+    assert (mvt_dame(board, (4, 2), (0, 6), [(0, 0), (0, 0)], False)) == board
+    assert (mvt_dame(board, (4, 0), (7, 1), [(0, 0), (0, 0)], False)) == board
 
 
 def test_mvt_cavalier_poss():
@@ -386,7 +386,7 @@ def test_mvt_cavalier_poss():
         ['  ', '  ', '  ', '  ', 'Cn', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
-        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (4, 4), (3, 2)) == False
+        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (4, 4), (3, 2), [(0, 0), (0, 0)], False) == False
     assert mvt_cavalier_poss([
         ['Tn', '  ', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
         ['Pn', 'Pn', '  ', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
@@ -395,7 +395,7 @@ def test_mvt_cavalier_poss():
         ['  ', '  ', '  ', '  ', 'Cn', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
-        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (4, 4), (5, 2)) == True
+        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (4, 4), (5, 2), [(0, 0), (0, 0)], False) == True
     assert mvt_cavalier_poss([
         ['Tn', '  ', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
         ['Pn', 'Pn', '  ', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
@@ -404,7 +404,7 @@ def test_mvt_cavalier_poss():
         ['  ', '  ', '  ', '  ', 'Cn', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
-        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (4, 4), (2, 3)) == True
+        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (4, 4), (2, 3), [(0, 0), (0, 0)], False) == True
     assert mvt_cavalier_poss([
         ['Tn', '  ', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
         ['Pn', 'Pn', '  ', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
@@ -413,7 +413,7 @@ def test_mvt_cavalier_poss():
         ['  ', '  ', '  ', '  ', 'Cn', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
-        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (4, 4), (2, 5)) == True
+        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (4, 4), (2, 5), [(0, 0), (0, 0)], False) == True
     assert mvt_cavalier_poss([
         ['Tn', '  ', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
         ['Pn', 'Pn', '  ', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
@@ -422,7 +422,7 @@ def test_mvt_cavalier_poss():
         ['  ', '  ', '  ', '  ', 'Cn', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
-        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (4, 4), (3, 6)) == True
+        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (4, 4), (3, 6), [(0, 0), (0, 0)], False) == True
     assert mvt_cavalier_poss([
         ['Tn', '  ', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
         ['Pn', 'Pn', '  ', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
@@ -431,7 +431,7 @@ def test_mvt_cavalier_poss():
         ['  ', '  ', '  ', '  ', 'Cn', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
-        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (4, 4), (5, 6)) == True
+        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (4, 4), (5, 6), [(0, 0), (0, 0)], False) == True
     assert mvt_cavalier_poss([
         ['Tn', '  ', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
         ['Pn', 'Pn', '  ', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
@@ -440,7 +440,7 @@ def test_mvt_cavalier_poss():
         ['  ', '  ', '  ', '  ', 'Cn', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
-        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (4, 4), (6, 5)) == True
+        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (4, 4), (6, 5), [(0, 0), (0, 0)], False) == True
     assert mvt_cavalier_poss([
         ['Tn', '  ', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
         ['Pn', 'Pn', '  ', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
@@ -449,7 +449,7 @@ def test_mvt_cavalier_poss():
         ['  ', '  ', '  ', '  ', 'Cn', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
-        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (4, 4), (6, 3)) == True
+        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (4, 4), (6, 3), [(0, 0), (0, 0)], False) == True
     assert mvt_cavalier_poss([
         ['Tn', '  ', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
         ['Pn', 'Pn', '  ', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
@@ -458,7 +458,7 @@ def test_mvt_cavalier_poss():
         ['  ', '  ', '  ', '  ', 'Cn', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
-        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (0, 6), (6, 3)) == False
+        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (0, 6), (6, 3), [(0, 0), (0, 0)], False) == False
     assert mvt_cavalier_poss([
         ['Tn', '  ', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
         ['Pn', 'Pn', '  ', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
@@ -467,7 +467,7 @@ def test_mvt_cavalier_poss():
         ['  ', '  ', '  ', '  ', 'Cn', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
-        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (0, 6), (2, 6)) == False
+        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (0, 6), (2, 6), [(0, 0), (0, 0)], False) == False
     assert mvt_cavalier_poss([
         ['Tn', '  ', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
         ['Pn', 'Pn', '  ', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
@@ -476,7 +476,7 @@ def test_mvt_cavalier_poss():
         ['  ', '  ', '  ', '  ', 'Cn', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
-        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (0, 6), (1, 6)) == False
+        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (0, 6), (1, 6), [(0, 0), (0, 0)], False) == False
     assert mvt_cavalier_poss([
         ['Tn', '  ', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
         ['Pn', 'Pn', '  ', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
@@ -485,7 +485,7 @@ def test_mvt_cavalier_poss():
         ['  ', '  ', '  ', '  ', 'Cn', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', 'Pb', '  ', '  ', '  '],
         ['Pb', 'Pb', 'Pb', '  ', 'Pb', 'Pb', 'Pb', 'Pb'],
-        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (4, 4), (6, 3)) == True
+        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (4, 4), (6, 3), [(0, 0), (0, 0)], False) == True
 
 
 def test_mvt_cavalier():
@@ -497,7 +497,7 @@ def test_mvt_cavalier():
         ['  ', '  ', '  ', '  ', 'Cn', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', 'Pb', '  ', '  ', '  '],
         ['Pb', 'Pb', 'Pb', '  ', 'Pb', 'Pb', 'Pb', 'Pb'],
-        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (4, 4), (6, 3)) == [
+        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (4, 4), (6, 3), [(0, 0), (0, 0)], False) == [
         ['Tn', '  ', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
         ['Pn', 'Pn', '  ', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
@@ -610,7 +610,7 @@ board10 = [
 
 
 def test_mvt_pion():
-    assert mvt_pion(board1, (1, 2), (3, 2)) == [
+    assert mvt_pion(board1, (1, 2), (3, 2), [(0, 0), (0, 0)], False) == [
         ['Tn', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
         ['Pn', 'Pn', '  ', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
@@ -619,8 +619,8 @@ def test_mvt_pion():
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
         ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
-    assert mvt_pion(board1, (1, 2), (5, 2)) == board1
-    assert mvt_pion(board7, (6, 7), (5, 7)) == [
+    assert mvt_pion(board1, (1, 2), (5, 2), [(0, 0), (0, 0)], False) == board1
+    assert mvt_pion(board7, (6, 7), (5, 7), [(0, 0), (0, 0)], False) == [
         ['Tn', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
         ['Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
@@ -629,7 +629,7 @@ def test_mvt_pion():
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', 'Pb'],
         ['Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', '  '],
         ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
-    assert mvt_pion(board4, (6, 7), (4, 7)) == [
+    assert mvt_pion(board4, (6, 7), (4, 7), [(0, 0), (0, 0)], False) == [
         ['Tn', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
         ['Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
@@ -638,7 +638,7 @@ def test_mvt_pion():
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', '  '],
         ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
-    assert mvt_pion(board2, (4, 4), (3, 3)) == [
+    assert mvt_pion(board2, (4, 4), (3, 3), [(0, 0), (0, 0)], False) == [
         ['Tn', 'Cn', 'Fn', 'Dn', 'Rn', 'Fn', 'Cn', 'Tn'],
         ['Pn', 'Pn', 'Pn', '  ', 'Pn', 'Pn', 'Pn', 'Pn'],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
@@ -647,18 +647,23 @@ def test_mvt_pion():
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['Pb', 'Pb', 'Pb', 'Pb', '  ', 'Pb', 'Pb', 'Pb'],
         ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']]
-    assert mvt_pion(board2, (0, 7), (0, 6)) == board2
-    assert mvt_pion(board3, (6, 2), (4, 2)) == board3
-    assert mvt_pion(board8, (2, 3), (1, 2)) == board8
-    assert mvt_pion(board9, (3, 3), (1, 3)) == board9
-    assert mvt_pion(board10, (6, 2), (5, 3)) == board10
+    assert mvt_pion(board2, (0, 7), (0, 6), [(0, 0), (0, 0)], False) == board2
+    assert mvt_pion(board3, (6, 2), (4, 2), [(0, 0), (0, 0)], False) == board3
+    assert mvt_pion(board8, (2, 3), (1, 2), [(0, 0), (0, 0)], False) == board8
+    assert mvt_pion(board9, (3, 3), (1, 3), [(0, 0), (0, 0)], False) == board9
+    assert mvt_pion(board10, (6, 2), (5, 3), [
+                    (0, 0), (0, 0)], False) == board10
 
 
 def test_mvt_pion_poss():
-    assert mvt_pion_poss(board2, (0, 7), (0, 6)) == False
-    assert mvt_pion_poss(board3, (6, 2), (4, 2)) == False
-    assert mvt_pion_poss(board9, (3, 3), (1, 3)) == False
-    assert mvt_pion_poss(board10, (6, 2), (5, 3)) == False
+    assert mvt_pion_poss(board2, (0, 7), (0, 6), [
+                         (0, 0), (0, 0)], False) == False
+    assert mvt_pion_poss(board3, (6, 2), (4, 2), [
+                         (0, 0), (0, 0)], False) == False
+    assert mvt_pion_poss(board9, (3, 3), (1, 3), [
+                         (0, 0), (0, 0)], False) == False
+    assert mvt_pion_poss(board10, (6, 2), (5, 3), [
+                         (0, 0), (0, 0)], False) == False
     assert mvt_pion_poss([
         ['Tn', '  ', 'Fn', 'Dn', '  ', 'Fn', 'Cn', 'Tn'],
         ['Pn', 'Pn', '  ', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
@@ -667,7 +672,7 @@ def test_mvt_pion_poss():
         ['  ', '  ', '  ', '  ', 'Cn', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
-        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (1, 1), (2, 1)) == True
+        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (1, 1), (2, 1), [(0, 0), (0, 0)], False) == True
     assert mvt_pion_poss([
         ['Tn', '  ', 'Fn', 'Dn', '  ', 'Fn', 'Cn', 'Tn'],
         ['Pn', 'Pn', '  ', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
@@ -676,7 +681,7 @@ def test_mvt_pion_poss():
         ['  ', 'Pb', '  ', '  ', 'Cn', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['Pb', '  ', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
-        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (3, 2), (4, 1)) == True
+        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (3, 2), (4, 1), [(0, 0), (0, 0)], False) == True
 
 
 def test_mvt_roi_poss():
@@ -688,7 +693,7 @@ def test_mvt_roi_poss():
         ['  ', '  ', '  ', '  ', 'Cn', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
-        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (3, 6), (3, 7)) == True
+        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (3, 6), (3, 7), [(0, 0), (0, 0)], False) == True
     assert mvt_roi_poss([
         ['Tn', '  ', 'Fn', 'Dn', '  ', 'Fn', 'Cn', 'Tn'],
         ['Pn', 'Pn', '  ', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
@@ -697,7 +702,7 @@ def test_mvt_roi_poss():
         ['  ', '  ', '  ', '  ', 'Cn', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
-        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (3, 6), (3, 5)) == True
+        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (3, 6), (3, 5), [(0, 0), (0, 0)], False) == True
     assert mvt_roi_poss([
         ['Tn', '  ', 'Fn', 'Dn', '  ', 'Fn', 'Cn', 'Tn'],
         ['Pn', 'Pn', '  ', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
@@ -706,7 +711,7 @@ def test_mvt_roi_poss():
         ['  ', '  ', '  ', '  ', 'Cn', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
-        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (3, 6), (4, 6)) == True
+        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (3, 6), (4, 6), [(0, 0), (0, 0)], False) == True
     assert mvt_roi_poss([
         ['Tn', '  ', 'Fn', 'Dn', '  ', 'Fn', 'Cn', 'Tn'],
         ['Pn', 'Pn', '  ', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
@@ -715,7 +720,7 @@ def test_mvt_roi_poss():
         ['  ', '  ', '  ', '  ', 'Cn', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
-        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (3, 6), (2, 6)) == True
+        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (3, 6), (2, 6), [(0, 0), (0, 0)], False) == True
     assert mvt_roi_poss([
         ['Tn', '  ', 'Fn', 'Dn', '  ', 'Fn', 'Cn', 'Tn'],
         ['Pn', 'Pn', '  ', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
@@ -724,7 +729,7 @@ def test_mvt_roi_poss():
         ['  ', '  ', '  ', '  ', 'Cn', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
-        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (3, 6), (2, 7)) == True
+        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (3, 6), (2, 7), [(0, 0), (0, 0)], False) == True
     assert mvt_roi_poss([
         ['Tn', '  ', 'Fn', 'Dn', '  ', 'Fn', 'Cn', 'Tn'],
         ['Pn', 'Pn', '  ', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
@@ -733,7 +738,7 @@ def test_mvt_roi_poss():
         ['  ', '  ', '  ', '  ', 'Cn', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
-        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (3, 6), (2, 5)) == True
+        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (3, 6), (2, 5), [(0, 0), (0, 0)], False) == True
     assert mvt_roi_poss([
         ['Tn', '  ', 'Fn', 'Dn', '  ', 'Fn', 'Cn', 'Tn'],
         ['Pn', 'Pn', '  ', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
@@ -742,7 +747,7 @@ def test_mvt_roi_poss():
         ['  ', '  ', '  ', '  ', 'Cn', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
-        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (3, 6), (4, 5)) == True
+        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (3, 6), (4, 5), [(0, 0), (0, 0)], False) == True
     assert mvt_roi_poss([
         ['Tn', '  ', 'Fn', 'Dn', '  ', 'Fn', 'Cn', 'Tn'],
         ['Pn', 'Pn', '  ', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
@@ -751,7 +756,7 @@ def test_mvt_roi_poss():
         ['  ', '  ', '  ', '  ', 'Cn', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  '],
         ['Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
-        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (3, 6), (4, 7)) == True
+        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (3, 6), (4, 7), [(0, 0), (0, 0)], False) == True
     assert mvt_roi_poss([
         ['Tn', '  ', 'Fn', 'Dn', '  ', 'Fn', 'Cn', 'Tn'],
         ['Pn', 'Pn', '  ', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
@@ -760,7 +765,7 @@ def test_mvt_roi_poss():
         ['  ', '  ', '  ', '  ', 'Cn', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', 'Rn', '  ', '  ', '  '],
         ['Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
-        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (5, 4), (4, 4)) == False
+        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (5, 4), (2, 2), [(0, 0), (0, 0)], False) == False
     assert mvt_roi_poss([
         ['Tn', '  ', 'Fn', 'Dn', '  ', 'Fn', 'Cn', 'Tn'],
         ['Pn', 'Pn', '  ', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
@@ -769,7 +774,7 @@ def test_mvt_roi_poss():
         ['  ', '  ', '  ', '  ', 'Cn', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', 'Rn', '  ', '  ', '  '],
         ['Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
-        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (5, 4), (6, 4)) == True
+        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (5, 4), (6, 4), [(0, 0), (0, 0)], False) == True
     assert mvt_roi_poss([
         ['Tn', '  ', 'Fn', 'Dn', '  ', 'Fn', 'Cn', 'Tn'],
         ['Pn', 'Pn', '  ', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
@@ -778,7 +783,7 @@ def test_mvt_roi_poss():
         ['  ', '  ', '  ', '  ', 'Cn', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', 'Rn', '  ', '  ', '  '],
         ['Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
-        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (5, 4), (6, 5)) == True
+        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (5, 4), (6, 5), [(0, 0), (0, 0)], False) == True
     assert mvt_roi_poss([
         ['Tn', '  ', 'Fn', 'Dn', '  ', 'Fn', 'Cn', 'Tn'],
         ['Pn', 'Pn', '  ', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],
@@ -787,7 +792,7 @@ def test_mvt_roi_poss():
         ['  ', '  ', '  ', '  ', 'Cn', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', 'Rn', '  ', '  ', '  '],
         ['Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
-        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (5, 4), (6, 3)) == True
+        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (5, 4), (6, 3), [(0, 0), (0, 0)], False) == True
 
 
 def test_mvt_roi():
@@ -799,7 +804,7 @@ def test_mvt_roi():
         ['  ', '  ', '  ', '  ', 'Cn', '  ', '  ', '  '],
         ['  ', '  ', '  ', '  ', 'Rn', '  ', '  ', '  '],
         ['Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb', 'Pb'],
-        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (5, 4), (6, 3)) == [
+        ['Tb', 'Cb', 'Fb', 'Db', 'Rb', 'Fb', 'Cb', 'Tb']], (5, 4), (6, 3), [(0, 0), (0, 0)], False) == [
 
         ['Tn', '  ', 'Fn', 'Dn', '  ', 'Fn', 'Cn', 'Tn'],
         ['Pn', 'Pn', '  ', 'Pn', 'Pn', 'Pn', 'Pn', 'Pn'],

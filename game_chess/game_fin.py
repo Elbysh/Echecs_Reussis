@@ -1,4 +1,4 @@
-from game_mvt import *
+from .game_mvt import *
 # from game_chess.game_mvt import *
 
 mvt_dico_poss = {'R': mvt_roi_poss, 'D': mvt_dame_poss, 'C': mvt_cavalier_poss,
