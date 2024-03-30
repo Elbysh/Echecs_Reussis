@@ -1,0 +1,5 @@
+Modules à installer pour lancer le jeu :
+
+- tkinter
+- pygame
+
